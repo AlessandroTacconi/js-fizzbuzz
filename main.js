@@ -1,5 +1,3 @@
-'use strict';
-
 /*
 Scrivi un programma che stampi in console i numeri da 1 a 100, ma che per i multipli di 3 stampi “Fizz” al posto del numero e per i multipli di 5 stampi “Buzz”. Per i numeri che sono sia multipli di 3 che di 5 stampi “FizzBuzz”.
 Prima di partire a scrivere codice poniamoci qualche domanda:
@@ -14,16 +12,33 @@ Applica stili differenti agli elementi aggiunti al DOM nel BONUS 1, a seconda ch
 Ricordate: il primo push dovrà essere un file README.md (potete scrivere testo senza concentrarvi sullo stile markdown) contenente la risoluzione dell’esercizio in linguaggio naturale!
 */
 
-const list = document.getElementById('list');
+'use strict';
 
-for (let num = 0; num < 100; num++) {
-  const li = document.createElement('li');
-  li.append('li');
-  list.append(num);
-  {
-    console.log(num);
+// variabili
+
+const container = document.createElement('div');
+
+for (let i = 1; i <= 100; i++) {
+  const tabella = document.createElement('p');
+
+  if (i % 15 === 0) {
+    console.log(`${i} FizzBuzz`);
+    tabella.innerHTML = `${i} FizzBuzz`;
+    tabella.classList.add('fizzbuzz');
+  } else if (i % 3 === 0) {
+    console.log(`${i} Fizz`);
+    tabella.innerHTML = `${i} Fizz`;
+    tabella.classList.add('fizz');
+  } else if (i % 5 === 0) {
+    console.log(`${i} Buzz`);
+    tabella.innerHTML = `${i} Buzz`;
+    tabella.classList.add('buzz');
+  } else {
+    console.log(`${i}`);
+    tabella.innerHTML = `${i}`;
+    tabella.classList.add('numero');
   }
-  if (num === 5) {
-    num.classList.add('rosso');
-  }
+  container.append(tabella);
 }
+
+document.getElementById('bingo').append(container);
